@@ -1,0 +1,30 @@
+ 
+.log {
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 35%;
+    border: 1px solid rgb(211, 205, 205);
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.form-control {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.socialaccount_providers {
+    list-style: none;
+}
+
+.socialaccount_providers a {
+    text-decoration: none;
+}
+
+.socialaccount_providers a:hover {
+    color: white;
+}
+
+.log a {
+    text-decoration: none;
+}
