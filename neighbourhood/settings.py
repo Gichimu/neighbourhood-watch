@@ -167,3 +167,5 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+ACCOUNT_EMAIL_REQUIRED = True
