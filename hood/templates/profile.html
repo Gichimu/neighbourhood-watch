@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {%load bootstrap4%} {%load static%}
+{% block content%}
+<div class="container profile">
+  <div class="row">
+    
+    {%if profile%}
+      <div class="col-md-4 prof text-center left">
+        <img src="{{ profile.avatar.url }}"
+          class="img-responsive img-thumbnail profile-pic" alt="prof" />
+        
+          <p><b>{{username}}</b></p>
+          <div class="text-center">
+            <p><small>{{ profile.bio }}</small></p>
+          </div>
+
+          <hr>
+      
+        <button class="btn btn-outline-inverse" data-toggle="modal" data-target="#editProfileModal">
+          Edit profile
+        </button>
+
+        <hr>
+        <div class="row">
+            <button class="btn btn-outline-success btn-sm create" data-toggle="modal" data-target="#createModal">Create posts</button>
+        </div>
+      </div>
+    {%else%}
+      <div class="col-md-4 prof text-center">
+        <img src="http://www.hotavatars.com/wp-content/uploads/2019/01/I80W1Q0.png"
+          class="img-responsive img-thumbnail rounded profile-pic" alt="prof" />
+
+          <p><b>{{username}}</b></p>
+          <hr>
+          <div>
+            <button class="btn btn-outline-inverse" data-toggle="modal" data-target="#editProfileModal">
+              Edit profile
+            </button>
+          </div>
+          <hr>
+          <div class="row">
+              <button class="btn btn-outline-success btn-sm create" data-toggle="modal" data-target="#createModal">Create posts</button>
+          </div>
+      </div>
+    {%endif%}
+      
+    
+    <div class="col-md-8 right">
+        <div class="row pics">
+            {%for post in posts%}
+            <a href="/post/{{post.id}}"><img class="img-fluid img-thumbnail gallery" src="{{ post.photo.url }}" alt=""></a>
+                                    
+            <!-- Modal -->
+            <div class="modal fade" id="{{post.title}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="modal-image" src="{{post.photo.url}}" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    {{post.title}}
+                                </div>
+                                <div class="col">
+                                    
+                                </div>
+                                <div class="col float-right">
+                                22 <i class="far fa-thumbs-up"></i> | 
+                                    <i class="far fa-thumbs-down"></i> 9
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {%empty%}
+              <p>There no projects to display</p>
+            {%endfor%}
+    </div>
+    
+    
+    
+
+  </div>
+  
+  
+
+   
+
+
+
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{%url 'update_profile'%}" method="post">
+          {% csrf_token %} {{forms.as_p}}
+          <button class="btn btn-outline-success btn-sm" value="Save">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add posts Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <form action="/create/post" method="post">
+          {% csrf_token %}
+          {% bootstrap_form create_business %}
+          <button class="btn btn-outline-success btn-sm" type="submit" value="Save">Save</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{%endblock%}

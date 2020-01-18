@@ -1,4 +1,25 @@
 from allauth.account.forms import LoginForm, SignupForm, ResetPasswordForm
+from django import forms
+from .models import Business, Profile, Neighbourhood
+from pyuploadcare.dj.models import ImageField
+
+class editForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['avatar', 'bio']
+        
+
+class businessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        fields = ['name', 'email']
+
+
+class neighbourhoodForm(forms.ModelForm):
+    class Meta:
+        model = Neighbourhood
+        fields = ['name', 'location', 'occupants']
+
 
 class MyCustomLoginForm(LoginForm):
     def __init__(self, *args, **kwargs):

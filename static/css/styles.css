@@ -34,3 +34,10 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+
+.profile-pic {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 0 auto;
+}
