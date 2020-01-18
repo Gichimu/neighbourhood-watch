@@ -5,7 +5,7 @@
     
     {%if profile%}
       <div class="col-md-4 prof text-center left">
-        <img src="{{ profile.avatar.url }}"
+        <img src="{{ profile.avatar.cdn_url }}"
           class="img-responsive img-thumbnail profile-pic" alt="prof" />
         
           <p><b>{{username}}</b></p>
@@ -21,7 +21,7 @@
 
         <hr>
         <div class="row">
-            <button class="btn btn-outline-success btn-sm create" data-toggle="modal" data-target="#createModal">Create posts</button>
+            <button class="btn btn-outline-success btn-sm create" data-toggle="modal" data-target="#createModal">Add a business</button>
         </div>
       </div>
     {%else%}
@@ -38,7 +38,7 @@
           </div>
           <hr>
           <div class="row">
-              <button class="btn btn-outline-success btn-sm create" data-toggle="modal" data-target="#createModal">Create posts</button>
+              <button class="btn btn-outline-success btn-sm create" data-toggle="modal" data-target="#createModal">Add a business</button>
           </div>
       </div>
     {%endif%}
@@ -47,6 +47,9 @@
     <div class="col-md-8 right">
         <div class="row pics">
             {%for post in posts%}
+            <div class="text-center">
+                <h6>You are viewing the different businesses present in the {{profile.neighbourhood.name}} area</h6>
+            </div>
             <a href="/post/{{post.id}}"><img class="img-fluid img-thumbnail gallery" src="{{ post.photo.url }}" alt=""></a>
                                     
             <!-- Modal -->
@@ -82,7 +85,9 @@
                 </div>
             </div>
             {%empty%}
-              <p>There no projects to display</p>
+            <div class="text-center">
+              <p>There no businesses to display in this area</p>
+            </div>
             {%endfor%}
     </div>
     
@@ -110,7 +115,7 @@
       </div>
       <div class="modal-body">
         <form action="{%url 'update_profile'%}" method="post">
-          {% csrf_token %} {{forms.as_p}}
+          {% csrf_token %} {% bootstrap_form form %}
           <button class="btn btn-outline-success btn-sm" value="Save">
             Save
           </button>

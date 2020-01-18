@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import editForm, businessForm, neighbourhoodForm, MyCustomLoginForm, MyCustomSignupForm, MyCustomSetPasswordForm
 from .models import Profile, Neighbourhood, Business
 
@@ -17,17 +17,17 @@ def signup(request):
 
 def profile(request, user_id):
     user = request.user
-    try:
-        prof = Profile.objects.get(user_id = user_id)
-        posts = Project.objects.filter(profile_id = prof.id)
-        for post in posts:
-            name = post.title.split()
-            if len(name) > 1:
-                post.title = '_'.join(name)
-            else:
-                pass
-    except Profile.DoesNotExist:
-        posts = None
+    # try:
+    #     prof = Profile.objects.get(user_id = user_id)
+    #     posts = Project.objects.filter(profile_id = prof.id)
+    #     for post in posts:
+    #         name = post.title.split()
+    #         if len(name) > 1:
+    #             post.title = '_'.join(name)
+    #         else:
+    #             pass
+    # except Profile.DoesNotExist:
+    #     posts = None
     
     try:
         businesses = Business.objects.all()

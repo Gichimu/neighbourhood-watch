@@ -4,9 +4,14 @@ from .models import Business, Profile, Neighbourhood
 from pyuploadcare.dj.models import ImageField
 
 class editForm(forms.ModelForm):
+
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio']
+        fields = ['avatar', 'bio', 'neighbourhood']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['neighbourhood'].queryset = Neighbourhood.objects.all()
         
 
 class businessForm(forms.ModelForm):

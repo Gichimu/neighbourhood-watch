@@ -15,7 +15,7 @@ class Profile(models.Model):
     avatar = ImageField(blank = True, manual_crop='')
     bio = models.TextField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    neighbourhood = models.OneToOneField(Neighbourhood, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.neighbourhood.name
