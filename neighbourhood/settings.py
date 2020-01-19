@@ -170,3 +170,9 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_FORMS = {
+    'login': 'hood.forms.MyCustomLoginForm',
+    'signup': 'hood.forms.MyCustomSignupForm',
+    'signup': 'hood.forms.MyCustomSocialSignupForm'
+}

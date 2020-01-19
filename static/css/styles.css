@@ -1,11 +1,35 @@
- 
+.top {
+    top: 0;
+}
+
+.navbar-brand {
+    font-family: 'Fredericka the Great', serif;
+    font-size: 1.7em;
+}
+
 .log {
     margin: 0 auto;
-    margin-top: 5%;
+    margin-top: 10%;
     width: 35%;
     border: 1px solid rgb(211, 205, 205);
     padding: 1%;
     border-radius: 10px;
+    color: black;
+}
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */ 
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    background-color: rgba(180, 204, 201, 0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+
 }
 
 .form-control {
@@ -55,8 +79,19 @@
 
 .profile {
     margin-top: 1%;
+    
 }
 
 .create {
     margin: 0 auto;
 }
+
+.biz {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+/* .home {
+    border: 1px solid grey;
+} */
