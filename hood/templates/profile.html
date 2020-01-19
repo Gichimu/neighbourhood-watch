@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {%load bootstrap4%} {%load static%}
 {% block content%}
 <div class="container profile">
-  <div class="row">
+  <div class="row content">
     
     {%if profile%}
       <div class="col-md-4 prof text-center left">
@@ -15,7 +15,7 @@
 
           <hr>
       
-        <button class="btn btn-outline-inverse" data-toggle="modal" data-target="#editProfileModal">
+        <button class="btn btn-outline-info" data-toggle="modal" data-target="#editProfileModal">
           Edit profile
         </button>
 
@@ -37,7 +37,7 @@
           <p><b>{{username}}</b></p>
           <hr>
           <div>
-            <button class="btn btn-outline-inverse" data-toggle="modal" data-target="#editProfileModal">
+            <button class="btn btn-outline-info" data-toggle="modal" data-target="#editProfileModal">
               Edit profile
             </button>
           </div>
@@ -48,13 +48,26 @@
     <div class="col-md-8 right">
         <div class="row biz">
           {%if businesses%}
-            <div class="text-center">
-                <h5>You are viewing the different businesses present in the <b>{{profile.neighbourhood.name}}</b> area</h5>
+            <div class="title text-center">
+                <h4>You are viewing the different businesses present in the <b>{{profile.neighbourhood.name}}</b> area</h4>
             </div>
             {%for business in businesses%}
             
-            <div class="text-center">
-              <a href="#{{business.name}}" data-toggle="modal">{{business.name}}</a>
+            <div class="tz text-center">
+              <a href="#{{business.name}}" data-toggle="modal">
+                <div class="card">
+                  <div class="card-header">
+                      
+                  </div>
+                  <div class="card-body">
+                      <h4>{{business.name}}</h4>
+                      
+                  </div>
+                  <div class="card-footer">
+                      <small>{{business.email}}</small>
+                  </div>
+                </div>
+              </a>
             </div>
             
             <hr>
@@ -95,10 +108,11 @@
             
             {%endfor%}
           {%else%}
-            <div class="text-center">
-              <p>There no businesses to display in this area</p>
+            <div class="title text-center">
+              <h4>There no businesses to display in this area</h4>
             </div>
           {%endif%}
+        
     </div>
     
   
@@ -157,7 +171,7 @@
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-
+        
       <div class="modal-body">
         <form action="{%url 'change_neighbourhood'%}" method="post">
           {% csrf_token %}

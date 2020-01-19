@@ -1,5 +1,5 @@
 from allauth.account.forms import LoginForm, SignupForm, ResetPasswordForm
-from allauth.socialaccount.forms import SignupForm
+# from allauth.socialaccount.forms import SignupForm
 from django import forms
 from .models import Business, Profile, Neighbourhood
 from pyuploadcare.dj.models import ImageField
@@ -91,22 +91,3 @@ class MyCustomSetPasswordForm(ResetPasswordForm):
         # Ensure you return the original result
         return email_address
 
-class MyCustomSocialSignupForm(SignupForm):
-    
-    def __init__(self, *args, **kwargs):
-        super(MyCustomSocialSignupForm, self).__init__(*args, **kwargs)
-        for fieldname, field in self.fields.items():
-            field.widget.attrs.update({
-                'class': 'form-control'
-            })
-
-    def save(self):
-
-        # Ensure you call the parent class's save.
-        # .save() returns a User object.
-        user = super(MyCustomSocialSignupForm, self).save()
-
-        # Add your own processing here.
-
-        # You must return the original result.
-        return user

@@ -1,3 +1,15 @@
+body {
+    background-image: url('https://goldwallpapers.com/uploads/posts/background-ocean/background_ocean_011.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: beige;
+    font-family: 'Oregano', serif;
+}
+
+.title {
+    
+}
+
 .top {
     top: 0;
 }
@@ -14,22 +26,7 @@
     border: 1px solid rgb(211, 205, 205);
     padding: 1%;
     border-radius: 10px;
-    color: black;
-}
-
-.overlay {
-    position: fixed; /* Sit on top of the page content */ 
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.5;
-    background-color: rgba(180, 204, 201, 0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-
+    color: white;
 }
 
 .form-control {
@@ -51,6 +48,7 @@
 
 .log a {
     text-decoration: none;
+    color: bisque;
 }
 
 .nav {
@@ -68,6 +66,19 @@
 
 .right {
     border-left: 1px solid rgb(236, 230, 230);
+    padding-left: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    margin-bottom: 1%;
+}
+
+.tz a {
+    text-decoration: none;
+    color: black;
 }
 
 /* .left {
@@ -76,6 +87,10 @@
     flex-direction: column;
     
 }  */
+
+.modal-body {
+    color: black;
+}
 
 .profile {
     margin-top: 1%;
@@ -86,12 +101,50 @@
     margin: 0 auto;
 }
 
-.biz {
+/* .biz {
     display: flex;
     flex-direction: column;
     margin: auto;
-}
+} */
 
 /* .home {
     border: 1px solid grey;
 } */
+
+.content {
+    position: relative;
+    font-size: 1.5em;
+}
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    margin: 0 auto;
+    background-color: rgba(214, 202, 202, 0.2); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+    padding: 10px;
+
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+    
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.results {
+    margin: 0 auto;
+    color: black;
+}
+
+.home-text {
+    margin-top: 30%;
+}

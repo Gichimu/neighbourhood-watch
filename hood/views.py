@@ -15,9 +15,6 @@ def signup(request):
     form = MyCustomSignupForm()
     return render(request, 'account/signup.html', {'form':form})
 
-def socialSignup(request):
-    form = MyCustomSocialSignupForm()
-    return render(request, 'socialaccount/signup.html', {'form': form})
 
 
 def profile(request, user_id):
@@ -122,3 +119,12 @@ def change(request):
         Profile.objects.filter(user_id = request.user.id).update(neighbourhood_id = hood.id)
         
     return redirect('profile', user_id = request.user.id)
+
+def search(request):
+    search_term = request.POST['search']
+    try:
+        businesses = Business.objects.filter(name = search_term)
+    except Business.DoesNotExist:
+        businesses = None
+
+    return render(request, 'search.html', {'businesses': businesses, 'search_term': search_term})
