@@ -194,3 +194,6 @@ ACCOUNT_FORMS = {
     'login': 'hood.forms.MyCustomLoginForm',
     'signup': 'hood.forms.MyCustomSignupForm',
 }
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
