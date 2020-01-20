@@ -22,14 +22,14 @@ class businessForm(forms.ModelForm):
 
 
 class neighbourhoodForm(forms.ModelForm):
+    name = forms.ModelChoiceField(queryset=Neighbourhood.objects.all())
+
     class Meta:
         model = Neighbourhood
         fields = ['name']
         exclude = ['location', 'occupants']
 
-def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['name'].queryset = Neighbourhood.objects.all()
+
 
 
 class MyCustomLoginForm(LoginForm):
