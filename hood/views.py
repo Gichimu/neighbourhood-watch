@@ -63,20 +63,6 @@ def profile(request, user_id):
     form = editForm()
     create_business = businessForm()
     create_neighbourhood = neighbourhoodForm()
-    # if request.method == "POST":
-    #     form = editForm(request.POST, request.FILES)
-    #     create_form = createForm(request.POST, request.FILES)
-    #     if form.is_valid() and create_form.is_valid():
-    #         image = create_form.save(commit = False)
-    #         profile = form.save(commit=False)
-    #         profile.user = request.user
-    #         image.profile_user = request.user
-    #         profile.save()
-    #         image.save()
-            
-    # else:
-    #     form = editForm()
-    #     create_form = createForm()
 
     
 
