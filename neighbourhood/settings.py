@@ -186,13 +186,7 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': 'a2iVn5VpluO5ZejaH_s6ysH4',
             'key': ''
         },
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
+        
     }
 }
 
