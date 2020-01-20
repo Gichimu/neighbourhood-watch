@@ -8,6 +8,12 @@ class Neighbourhood(models.Model):
     location = models.CharField(max_length=50)
     occupants = models.PositiveIntegerField(default=0)
 
+    def save_neighbourhood(self):
+        self.save()
+
+    def delete_neighbourhood(self):
+        self.delete()
+
     def __str__(self):
         return self.name
 
@@ -16,6 +22,9 @@ class Profile(models.Model):
     bio = models.TextField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+
+    def save_profile(self):
+        self.save()
 
     def __str__(self):
         return self.neighbourhood.name
@@ -26,6 +35,9 @@ class Business(models.Model):
     email = models.CharField(max_length=50)
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def save_business(self):
+        self.save()
 
     def __str__(self):
         return self.name
