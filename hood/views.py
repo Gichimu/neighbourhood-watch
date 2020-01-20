@@ -114,7 +114,7 @@ def change(request):
     form = neighbourhoodForm(request.POST)
     if form.is_valid():
         neighbourhood = request.POST['name']
-        hood = Neighbourhood.objects.get(name = neighbourhood)
+        hood = Neighbourhood.objects.get(id = neighbourhood)
         
         Profile.objects.filter(user_id = request.user.id).update(neighbourhood_id = hood.id)
         
